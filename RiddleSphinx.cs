@@ -1,29 +1,34 @@
 using System;
+using System.Collections.Generic;
 
 class Sphinx
-{
+{  
   static void Main()
   {
-    Console.WriteLine("You have encountered the Sphinx of Egypt. Solve this riddle or be destroyed!");
-    Console.WriteLine("I am not alive, but I grow; I don't have lungs, but I need air; I don't have a mouth, but water kills me. What am I?");
-    string userAnswer = Console.ReadLine();
-    if(userAnswer == "fire" || userAnswer == "Fire")
+    AskRiddle();
+    bool isCorrect = true;
+    while (isCorrect)
     {
-      Console.WriteLine("Correct! Next Question:");
-      Console.WriteLine("What runs around the whole yard without moving?");
-      string userAnswer2 = Console.ReadLine();
-      if(userAnswer2 == "fence" || userAnswer2 == "Fence")
-      {
-        Console.WriteLine("You have defeated the Sphinx!");
-      }
-      else
-      {
-      Console.WriteLine("You have failed the test, and the Sphinx has eaten you!");
-      }
+      isCorrect = AskRiddle();
+    }
+    Console.WriteLine("You lose.");
+  }
+
+  static bool AskRiddle()
+  {
+    string[] riddles = { "I am not alive, but I grow; I don't have lungs, but I need air; I don't have a mouth, but water kills me. What am I?", "What runs around the whole yard without moving?", "What can you catch but never throw?" };
+    string[] answers = { "fire", "fence", "a cold" };
+    Random rnd = new Random();
+    int randomIndex = rnd.Next(0,3);
+    Console.WriteLine(riddles[randomIndex]);
+    string userAnswer = Console.ReadLine();
+    if(userAnswer == answers[randomIndex])
+    {
+      return true;
     }
     else
     {
-      Console.WriteLine("You have failed the test, and the Sphinx has eaten you!");
+      return false;
     }
   }
 }
