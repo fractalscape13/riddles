@@ -9,7 +9,17 @@ class Sphinx
     string userAnswer = Console.ReadLine();
     if(userAnswer == "fire" || userAnswer == "Fire")
     {
-      Console.WriteLine("You have defeated the Sphinx!");
+      Console.WriteLine("Correct! Next Question:");
+      Console.WriteLine("What runs around the whole yard without moving?");
+      string userAnswer2 = Console.ReadLine();
+      if(userAnswer2 == "fence" || userAnswer2 == "Fence")
+      {
+        Console.WriteLine("You have defeated the Sphinx!");
+      }
+      else
+      {
+      Console.WriteLine("You have failed the test, and the Sphinx has eaten you!");
+      }
     }
     else
     {
